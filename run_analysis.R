@@ -15,12 +15,12 @@
 # Initial setup
 ###########################
 library(reshape2)        
-setwd("Z:\\Coursera\\Data Science\\Getting and Cleaning Data\\Project")        
+setwd("Z:/Coursera/Data Science/Getting and Cleaning Data/Project")        
 
 ###########################
 # Read Features
 ###########################
-features <- read.table("features.txt")
+features <- read.table("./UCI HAR Dataset/features.txt")
 names(features) <- c("No","Name")
 features <- rbind(features[grep("mean\\(\\)",features$Name),],features[grep("std\\(\\)",features$Name),])
 features <- features[order(features$No),]
@@ -28,20 +28,20 @@ features <- features[order(features$No),]
 ###########################
 # Read Activities
 ###########################
-activities <- read.table("activity_labels.txt")
+activities <- read.table("./UCI HAR Dataset/activity_labels.txt")
 names(activities) <- c("No","Name")
 
 ###########################
 # Combine Test data
 ###########################
-features.test <- read.table("X_test.txt")[features$Name]
+features.test <- read.table("./UCI HAR Dataset/test/X_test.txt")[features$Name]
 names(features.test) <- features$Name
 
-activities.test <- read.table("y_test.txt")
+activities.test <- read.table("./UCI HAR Dataset/test/y_test.txt")
 names(activities.test) <- c("Activity")
 activities.test$Activity <- factor(activities.test$Activity, levels = activities$No, labels = activities$Name)
 
-subject.test <- read.table("subject_test.txt")
+subject.test <- read.table("./UCI HAR Dataset/test/subject_test.txt")
 names(subject.test) <- c("Subject")
 
 test <- cbind(features.test, Activity = activities.test$Activity, Subject = subject.test$Subject)
@@ -49,14 +49,14 @@ test <- cbind(features.test, Activity = activities.test$Activity, Subject = subj
 ###########################
 # Combine Train data
 ###########################
-features.train <- read.table("X_train.txt")[features$Name]
+features.train <- read.table("./UCI HAR Dataset/train/X_train.txt")[features$Name]
 names(features.train) <- features$Name
 
-activities.train <- read.table("y_train.txt")
+activities.train <- read.table("./UCI HAR Dataset/train/y_train.txt")
 names(activities.train) <- c("Activity")
 activities.train$Activity <- factor(activities.train$Activity, levels = activities$No, labels = activities$Name)
 
-subject.train <- read.table("subject_train.txt")
+subject.train <- read.table("./UCI HAR Dataset/train/subject_train.txt")
 names(subject.train) <- c("Subject")
 
 train <- cbind(features.train, Activity = activities.train$Activity, Subject = subject.train$Subject)
