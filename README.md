@@ -2,7 +2,7 @@ Getting and Cleaning Data
 
 Course Project
 
- You should create one R script called run_analysis.R that does the following. 
+You should create one R script called run_analysis.R that does the following. 
 
 1. Merges the training and the test sets to create one data set.
 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
@@ -18,4 +18,5 @@ Steps to complete the project
 4. Finally, run the run_analysis.R script and collect tidydata.txt from your working directory.
  
 Dependencies:
+
 1. Please make sure to install reshape2 package, because run_analysis.R is using it.
